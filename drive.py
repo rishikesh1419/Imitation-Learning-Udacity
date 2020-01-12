@@ -22,7 +22,7 @@ from flask import Flask
 #input output
 from io import BytesIO
 
-# import tensorflow as tf
+import tensorflow as tf
 #load our saved model
 from tensorflow.keras.models import load_model
 
@@ -59,7 +59,9 @@ def telemetry(sid, data):
         try:
             image = np.asarray(image)       # from PIL image to numpy array
             image = utils.preprocess(image) # apply the preprocessing
+            image = np.float32(image)
             image = np.array([image])       # the model expects 4D array
+            # image = tf.cast(image, np.float32)
 
             # predict the steering angle for the image
             steering_angle = float(model.predict(image, batch_size=1))
@@ -76,7 +78,7 @@ def telemetry(sid, data):
             print('{} {} {}'.format(steering_angle, throttle, speed))
             send_control(steering_angle, throttle)
         except Exception as e:
-            print(e)
+            print("tlmt",e)
 
         # save frame
         if args.image_folder != '':
