@@ -59,7 +59,7 @@ def telemetry(sid, data):
         try:
             image = np.asarray(image)       # from PIL image to numpy array
             image = utils.preprocess(image) # apply the preprocessing
-            image = np.float32(image)
+            image = np.float32(image)       # making the data types compatible
             image = np.array([image])       # the model expects 4D array
             # image = tf.cast(image, np.float32)
 
