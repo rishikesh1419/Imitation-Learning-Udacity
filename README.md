@@ -29,6 +29,21 @@
 - https://conda.anaconda.org/menpo
 - conda-forge
 
+## How to use
+Start the simulator in manual mode and press "R" to start recording. Drive for around 3-5 laps.
+A dataset will be generated with 3 images for each instance and corresponding throttle, steering angle, brake and speed.  
+
+Run the model.py file.
+```
+python model.py
+```
+
+During training, .h5 files will be created.
+To simulate the car, start the simulator in autonomous mode run the drive.py file.
+```
+python drive.py <model file>
+```
+
 ## Credits
 
 The original code was written by [naokishibuya](https://github.com/naokishibuya).  
